@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+    <EntitySetMapping Name="UserPosts">
+      <EntityTypeMapping TypeName="DatabaseModel.UserPost">
+        <MappingFragment StoreEntitySet="UserPost">
+          <ScalarProperty Name="Anthropology" ColumnName="Anthropology" />
+          <ScalarProperty Name="Accounting" ColumnName="Accounting" />
+          <ScalarProperty Name="Medicine" ColumnName="Medicine" />
+          <ScalarProperty Name="MarineScience" ColumnName="MarineScience" />
+          <ScalarProperty Name="Dentistry" ColumnName="Dentistry" />
+          <ScalarProperty Name="English" ColumnName="English" />
+          <ScalarProperty Name="Architecture" ColumnName="Architecture" />
+          <ScalarProperty Name="Music" ColumnName="Music" />
+          <ScalarProperty Name="Business" ColumnName="Business" />
+          <ScalarProperty Name="Economics" ColumnName="Economics" />
+          <ScalarProperty Name="Law" ColumnName="Law" />
+          <ScalarProperty Name="Physics" ColumnName="Physics" />
+          <ScalarProperty Name="Chemistry" ColumnName="Chemistry" />
+          <ScalarProperty Name="Communication" ColumnName="Communication" />
+          <ScalarProperty Name="Math" ColumnName="Math" />
+          <ScalarProperty Name="Geographys" ColumnName="Geographys" />
+          <ScalarProperty Name="Biology" ColumnName="Biology" />
+          <ScalarProperty Name="Teaching" ColumnName="Teaching" />
+          <ScalarProperty Name="Engineering" ColumnName="Engineering" />
+          <ScalarProperty Name="Computer" ColumnName="Computer" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Courses" ColumnName="Courses" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="AboutYourSelf" ColumnName="AboutYourSelf" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

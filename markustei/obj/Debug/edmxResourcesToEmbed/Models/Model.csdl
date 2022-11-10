@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UserPost">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Courses" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AboutYourSelf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Computer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Engineering" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Teaching" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Biology" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Geographys" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Math" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Communication" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Chemistry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Physics" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Law" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Economics" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Business" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Music" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Architecture" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="English" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dentistry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MarineScience" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Medicine" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Accounting" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Anthropology" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserPosts" EntityType="Self.UserPost" />
+  </EntityContainer>
+</Schema>

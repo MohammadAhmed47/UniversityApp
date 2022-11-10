@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="UserPost">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="255" />
+    <Property Name="Courses" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Picture" Type="text" />
+    <Property Name="AboutYourSelf" Type="text" />
+    <Property Name="Computer" Type="nvarchar" MaxLength="255" />
+    <Property Name="Engineering" Type="nvarchar" MaxLength="255" />
+    <Property Name="Teaching" Type="nvarchar" MaxLength="255" />
+    <Property Name="Biology" Type="nvarchar" MaxLength="255" />
+    <Property Name="Geographys" Type="nvarchar" MaxLength="255" />
+    <Property Name="Math" Type="nvarchar" MaxLength="255" />
+    <Property Name="Communication" Type="nvarchar" MaxLength="255" />
+    <Property Name="Chemistry" Type="nvarchar" MaxLength="255" />
+    <Property Name="Physics" Type="nvarchar" MaxLength="255" />
+    <Property Name="Law" Type="nvarchar" MaxLength="255" />
+    <Property Name="Economics" Type="nvarchar" MaxLength="255" />
+    <Property Name="Business" Type="nvarchar" MaxLength="255" />
+    <Property Name="Music" Type="nvarchar" MaxLength="255" />
+    <Property Name="Architecture" Type="nvarchar" MaxLength="255" />
+    <Property Name="English" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dentistry" Type="nvarchar" MaxLength="255" />
+    <Property Name="MarineScience" Type="nvarchar" MaxLength="255" />
+    <Property Name="Medicine" Type="nvarchar" MaxLength="255" />
+    <Property Name="Accounting" Type="nvarchar" MaxLength="255" />
+    <Property Name="Anthropology" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="UserPost" EntityType="Self.UserPost" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UserPost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="255" />
+          <Property Name="Courses" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsActive" Type="int" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="Picture" Type="text" />
+          <Property Name="AboutYourSelf" Type="text" />
+          <Property Name="Computer" Type="nvarchar" MaxLength="255" />
+          <Property Name="Engineering" Type="nvarchar" MaxLength="255" />
+          <Property Name="Teaching" Type="nvarchar" MaxLength="255" />
+          <Property Name="Biology" Type="nvarchar" MaxLength="255" />
+          <Property Name="Geographys" Type="nvarchar" MaxLength="255" />
+          <Property Name="Math" Type="nvarchar" MaxLength="255" />
+          <Property Name="Communication" Type="nvarchar" MaxLength="255" />
+          <Property Name="Chemistry" Type="nvarchar" MaxLength="255" />
+          <Property Name="Physics" Type="nvarchar" MaxLength="255" />
+          <Property Name="Law" Type="nvarchar" MaxLength="255" />
+          <Property Name="Economics" Type="nvarchar" MaxLength="255" />
+          <Property Name="Business" Type="nvarchar" MaxLength="255" />
+          <Property Name="Music" Type="nvarchar" MaxLength="255" />
+          <Property Name="Architecture" Type="nvarchar" MaxLength="255" />
+          <Property Name="English" Type="nvarchar" MaxLength="255" />
+          <Property Name="Dentistry" Type="nvarchar" MaxLength="255" />
+          <Property Name="MarineScience" Type="nvarchar" MaxLength="255" />
+          <Property Name="Medicine" Type="nvarchar" MaxLength="255" />
+          <Property Name="Accounting" Type="nvarchar" MaxLength="255" />
+          <Property Name="Anthropology" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="UserPost" EntityType="Self.UserPost" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UserPost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Courses" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AboutYourSelf" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Computer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Engineering" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Teaching" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Biology" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Geographys" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Math" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Communication" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Chemistry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Physics" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Law" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Economics" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Business" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Music" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Architecture" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="English" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Dentistry" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MarineScience" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Medicine" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Accounting" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Anthropology" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserPosts" EntityType="Self.UserPost" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="UserPosts">
+            <EntityTypeMapping TypeName="DatabaseModel.UserPost">
+              <MappingFragment StoreEntitySet="UserPost">
+                <ScalarProperty Name="Anthropology" ColumnName="Anthropology" />
+                <ScalarProperty Name="Accounting" ColumnName="Accounting" />
+                <ScalarProperty Name="Medicine" ColumnName="Medicine" />
+                <ScalarProperty Name="MarineScience" ColumnName="MarineScience" />
+                <ScalarProperty Name="Dentistry" ColumnName="Dentistry" />
+                <ScalarProperty Name="English" ColumnName="English" />
+                <ScalarProperty Name="Architecture" ColumnName="Architecture" />
+                <ScalarProperty Name="Music" ColumnName="Music" />
+                <ScalarProperty Name="Business" ColumnName="Business" />
+                <ScalarProperty Name="Economics" ColumnName="Economics" />
+                <ScalarProperty Name="Law" ColumnName="Law" />
+                <ScalarProperty Name="Physics" ColumnName="Physics" />
+                <ScalarProperty Name="Chemistry" ColumnName="Chemistry" />
+                <ScalarProperty Name="Communication" ColumnName="Communication" />
+                <ScalarProperty Name="Math" ColumnName="Math" />
+                <ScalarProperty Name="Geographys" ColumnName="Geographys" />
+                <ScalarProperty Name="Biology" ColumnName="Biology" />
+                <ScalarProperty Name="Teaching" ColumnName="Teaching" />
+                <ScalarProperty Name="Engineering" ColumnName="Engineering" />
+                <ScalarProperty Name="Computer" ColumnName="Computer" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Courses" ColumnName="Courses" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="AboutYourSelf" ColumnName="AboutYourSelf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Markus Teimann Website</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/assets/css/core.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/assets/css/components.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/assets/css/colors.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/loaders/pace.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/core/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/loaders/blockui.min.js"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/forms/selects/select2.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/visualization/d3/d3.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/forms/styling/switchery.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/assets/js/plugins/pickers/daterangepicker.js"></script>
+
+    <script type="text/javascript" src="~/Content/assets/assets/js/core/app.js"></script>
+    @*<script type="text/javascript" src="~/Content/assets/assets/js/pages/dashboard.js"></script>*@
+    <script type="text/javascript" src="~/Content/assets/assets/js/pages/form_layouts.js"></script>
+    <!-- /theme JS files -->
+
+    <script type="text/javascript" src="~/Content/assets/CustomAssets/Custom-buttons.js"></script>
+
+    <style>
+        .custom-btn-success {
+            border-radius: 100px;
+            font-size: 14px;
+            background: #8BAF91;
+            padding: 14px 80px;
+            /*width:50%;
+            height:51px;*/
+            border: 1px solid #000000;
+            color: #000000;
+            margin: 10px 0 10px 0;
+        }
+
+        .custom-btn-danger {
+            border-radius: 100px;
+            font-size: 14px;
+            background: #B45674;
+            padding: 14px 80px;
+            border: 1px solid #000000;
+            color: #000000;
+            margin: 10px 0 10px 0;
+        }
+
+        .row1 {
+            background: #BBBBBB;
+        }
+
+        .custom-search-buttons {
+            border: solid 2px black;
+            padding: 10px 13px;
+            background-color: #95979c;
+            font-size: 18px;
+            text-decoration: underline;
+            color: #000000;
+            font-weight: 600;
+            text-decoration-color: #ffffff;
+        }
+
+            .custom-search-buttons:hover {
+                border: solid 2px black;
+                padding: 10px 13px;
+                background-color: #95979c;
+                font-size: 18px;
+                text-decoration: underline;
+                color: #000000;
+                font-weight: 600;
+                text-decoration-color: #ffffff;
+            }
+
+        .col-xs-12 > ul > li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main navbar -->
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><img src="assets/images/logo_light.png" alt=""></a>
+
+            @*<ul class="nav navbar-nav visible-xs-block">
+                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+                <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+            </ul>*@
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar-mobile">
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+            <!-- Main content -->
+            <div class="content-wrapper" style="background:#37474F;">
+
+                    @RenderBody()
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+</body>
+</html>

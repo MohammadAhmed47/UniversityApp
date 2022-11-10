@@ -1,0 +1,1570 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    .control-label {
+        font-size: 17px;
+    }
+</style>
+<!-- Page header -->
+<div class="page-header page-header-default">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><i class="icon-home2 position-left"></i> Home</li>
+            <li class="active">Dashboard</li>
+        </ul>
+    </div>
+</div>
+<!-- /page header -->
+<!-- Content area -->
+<div class="content">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 col-sm-12 col-xs-12" id="alertMsg">
+            @if (ViewBag.errormsg != "")
+            {
+                <div class="alert alert-danger alert-styled-left alert-bordered">
+                    <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
+                    <span class="text-semibold">@ViewBag.errormsg</span>
+                </div>
+            }
+
+            @if (ViewBag.successfullmsg != "")
+            {
+                <div class="alert alert-success alert-styled-left alert-arrow-left alert-bordered">
+                    <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
+                    <span class="text-semibold">@ViewBag.successfullmsg</span>
+                </div>
+            }
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <div class="panel panel-flat" style="padding:40px;background:#f9f9f9;">
+        <div class="row">
+            <div class="col-md-2 col-sm-12 col-xs-12"></div>
+            <div class="col-md-8 col-sm-12 col-xs-12 p-lg-3">
+                <form action="@Url.Action("Search","Home")" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <div class="panel panel-flat">
+                        @*<div class="panel-heading">
+                                <h5 class="panel-title">Basic layout</h5>
+                                <div class="heading-elements">
+                                    <ul class="icons-list">
+                                        <li><a data-action="collapse"></a></li>
+                                        <li><a data-action="reload"></a></li>
+                                        <li><a data-action="close"></a></li>
+                                    </ul>
+                                </div>
+                            </div>*@
+
+                        <div class="panel-body text-white" style="background:#37474F;">
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">Your Name:</label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="Name" class="form-control" placeholder="Eugene Kopyov" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">Gender:</label>
+                                <div class="col-lg-10">
+                                    <label class="radio-inline">
+                                        <input type="radio" value="Male" class="styled" name="Gender" checked="checked">
+                                        Male
+                                    </label>
+
+                                    <label class="radio-inline">
+                                        <input type="radio" value="Female" class="styled" name="Gender">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">Picture:</label>
+                                <div class="col-lg-10">
+                                    <input type="file" class="file-styled" name="Picture">
+                                    <span class="help-block text-white">Accepted formats: jpeg, png, jpg. Max file size 2Mb</span>
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">
+                                <label class="col-lg-2 control-label">Your Courses</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Courses" class="select-icons p-1" name="CheckedCourses[]" required id="Courses">
+                                        <option value="">Choose Your Courses</option>
+                                        <option value="Computer Science">Computer Science</option>
+                                        <option value="Engineering">Engineering</option>
+                                        <option value="Teaching">Teaching</option>
+                                        <option value="Biology">Biology</option>
+                                        <option value="Geography">Geography</option>
+                                        <option value="Math">Maths</option>
+                                        <option value="Communication">Communication</option>
+                                        <option value="Chemistry">Chemistry</option>
+                                        <option value="Physics">Physics</option>
+                                        <option value="Law">Law</option>
+                                        <option value="Economics">Economics</option>
+                                        <option value="Business">Business</option>
+                                        <option value="Music">Music</option>
+                                        <option value="Architecture">Architecture</option>
+                                        <option value="English">English</option>
+                                        <option value="Dentistry">Dentistry</option>
+                                        <option value="Marine Science">Marine Science</option>
+                                        <option value="Medicine">Medicine</option>
+                                        <option value="Accounting">Accounting</option>
+                                        <option value="Anthropology">Anthropology</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="CSModules" style="display:none">
+                                <label class="col-lg-2 control-label">CS Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="CSModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                            <option value="COM1005">COM1005</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                            <option value="COM1008">COM1008</option>
+                                            <option value="COM1009">COM1009</option>
+                                            <option value="COM1010">COM1010</option>
+                                            <option value="COM1011">COM1011</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                            <option value="COM2008">COM2008</option>
+                                            <option value="COM2009">COM2009</option>
+                                            <option value="COM2010">COM2010</option>
+                                            <option value="COM2011">COM2011</option>
+                                            <option value="COM2012">COM2012</option>
+                                            <option value="COM2013">COM2013</option>
+                                            <option value="COM2014">COM2014</option>
+                                            <option value="COM2015">COM2015</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                            <option value="COM4003">COM4003</option>
+                                            <option value="COM4004">COM4004</option>
+                                            <option value="COM4005">COM4005</option>
+                                            <option value="COM4006">COM4006</option>
+                                            <option value="COM4007">COM4007</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="EngineeringModules" style="display:none">
+                                <label class="col-lg-2 control-label">Engineering Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="EngineeringModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="TeachingModules" style="display:none">
+                                <label class="col-lg-2 control-label">Teaching Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="TeachingModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="BiologyModules" style="display:none">
+                                <label class="col-lg-2 control-label">Biology Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="BiologyModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="GeographyModules" style="display:none">
+                                <label class="col-lg-2 control-label">Geography Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="GeographyModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="MathsModules" style="display:none">
+                                <label class="col-lg-2 control-label">Maths Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="MathsModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="CommunicationModules" style="display:none">
+                                <label class="col-lg-2 control-label">Communication Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="CommunicationModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="ChemistryModules" style="display:none">
+                                <label class="col-lg-2 control-label">Chemistry Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="ChemistryModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="PhysicsModules" style="display:none">
+                                <label class="col-lg-2 control-label">Physics Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="PhysicsModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="LawModules" style="display:none">
+                                <label class="col-lg-2 control-label">Law Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="LawModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="EconomicsModules" style="display:none">
+                                <label class="col-lg-2 control-label">Economics Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="EconomicsModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="BusinessModules" style="display:none">
+                                <label class="col-lg-2 control-label">Business Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="BusinessModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="MusicModules" style="display:none">
+                                <label class="col-lg-2 control-label">Music Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="MusicModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="ArchitectureModules" style="display:none">
+                                <label class="col-lg-2 control-label">Architecture Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="ArchitectureModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="EnglishModules" style="display:none">
+                                <label class="col-lg-2 control-label">English Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="EnglishModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="DentistryModules" style="display:none">
+                                <label class="col-lg-2 control-label">Dentistry Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="DentistryModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="MarineScienceModules" style="display:none">
+                                <label class="col-lg-2 control-label">Marine Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="Marine ScienceModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="MedicineModules" style="display:none">
+                                <label class="col-lg-2 control-label">Medicine Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="MedicineModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="AccountingModules" style="display:none">
+                                <label class="col-lg-2 control-label">Accounting Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose YourModules" class="select-icons p-1" name="AccountingModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="AnthropologyModules" style="display:none">
+                                <label class="col-lg-2 control-label">Anthropology Modules</label>
+                                <div class="col-lg-10">
+                                    <select multiple="multiple" data-placeholder="Choose Your Modules" class="select-icons p-1" name="AnthropologyModules">
+                                        <optgroup label="First Year">
+                                            <option value="COM1001">COM1001</option>
+                                            <option value="COM1002">COM1002</option>
+                                            <option value="COM1003">COM1003</option>
+                                            <option value="COM1004">COM1004</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year">
+                                            <option value="COM2001">COM2001</option>
+                                            <option value="COM2002">COM2002</option>
+                                            <option value="COM2003">COM2003</option>
+                                            <option value="COM2004">COM2004</option>
+                                            <option value="COM2005">COM2005</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year">
+                                            <option value="COM3001">COM3001</option>
+                                            <option value="COM3002">COM3002</option>
+                                            <option value="COM3003">COM3003</option>
+                                            <option value="COM3004">COM3004</option>
+                                        </optgroup>
+                                        <optgroup label="First Year (Optional)">
+                                            <option value="COM1006">COM1006</option>
+                                            <option value="COM1007">COM1007</option>
+                                        </optgroup>
+                                        <optgroup label="Second Year (Optional)">
+                                            <option value="COM2006">COM2006</option>
+                                            <option value="COM2007">COM2007</option>
+                                        </optgroup>
+                                        <optgroup label="Third Year (Optional)">
+                                            <option value="COM3004">COM3004</option>
+                                            <option value="COM3005">COM3005</option>
+                                        </optgroup>
+                                        <optgroup label="Fourth Year (Optional)">
+                                            <option value="COM4001">COM4001</option>
+                                            <option value="COM4002">COM4002</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>*@
+
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">About Yourself</label>
+                                <div class="col-lg-10">
+                                    <textarea rows="5" cols="5" name="AboutYourSelf" class="form-control" placeholder="Enter Your Intro here" @*maxlength="300"*@></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input type="submit" class="btn btn-primary" value="Search" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-3"></div>
+        </div>
+        <hr />
+
+        <div style="overflow-y:scroll; height:1000px; overflow-x:hidden">
+            @if (ViewBag.UserPost != null)
+            {
+                foreach (var item in ViewBag.UserPost)
+                {
+                    <div class="row">
+                        <style>
+                            .custom-style {
+                                width: 100%;
+                                height: 280px !important;
+                            }
+
+                            .custom-name:hover {
+                                text-decoration: underline;
+                                cursor: default;
+                            }
+
+                            .custom-name {
+                                font-size: 23px;
+                            }
+
+                            .custom-heading {
+                                font-size: 17px;
+                            }
+                        </style>
+                        <div class="col-md-2 col-sm-12 col-xs-12">
+                        </div>
+                        <div class="col-md-8 col-sm-12 col-xs-12">
+                            @*<br />
+                                <span class="text-semibold">@item.CreatedAt.ToString("dd/MM/yyyy")</span>*@
+                            <div class="thumbnail no-padding text-white" style="background:#37474F; border-radius:5px">
+                                <div style="padding-left:15px">
+                                    <h6 class="custom-name">@item.Name </h6>
+                                </div>
+
+                                @if (item.Picture != null)
+                                {
+                                    <div class="thumb" style="padding:10px;">
+                                        <img src="@item.Picture" alt="" class="custom-style">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="thumb" style="padding:10px;">
+                                        <img src="~/Content/assets/assets/images/placeholder.jpg" alt="" class="custom-style">
+                                    </div>
+                                }
+
+                            <div class="caption text-white">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                        Courses
+                                    </div>
+                                    <div class="col-md-8 col-sm-6 col-xs-6">
+                                        <label class="display-block custom-heading" style="overflow-wrap:break-word">@item.Courses</label>
+                                    </div>
+                                </div>
+                                <hr />
+                                @if (item.Computer != "" && item.Computer != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Computer Science
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Computer</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Engineering != "" && item.Engineering != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Engineering
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Engineering</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Teaching != "" && item.Teaching != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Teaching
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Teaching</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Biology != "" && item.Biology != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Biology
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Biology</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Geographys != "" && item.Geographys != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Geography
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Geographys</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Math != "" && item.Math != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Math
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Math</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Communication != "" && item.Communication != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Communication
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Communication</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Chemistry != "" && item.Chemistry != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Chemistry
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Chemistry</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Physics != "" && item.Physics != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Physics
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Physics</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Law != "" && item.Law != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Law
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Law</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Economics != "" && item.Economics != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Economics
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Economics</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Business != "" && item.Business != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Business
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Business</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Music != "" && item.Music != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Music
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Music</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Architecture != "" && item.Architecture != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Architecture
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Architecture</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.English != "" && item.English != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules English
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.English</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Dentistry != "" && item.Dentistry != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Dentistry
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Dentistry</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.MarineScience != "" && item.MarineScience != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Marine Science
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.MarineScience</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Medicine != "" && item.Medicine != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Medicine
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Medicine</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Accounting != "" && item.Accounting != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Accounting
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Accounting</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                @if (item.Anthropology != "" && item.Anthropology != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                            Modules Anthropology
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-6">
+                                            <p style="overflow-wrap:break-word">@item.Anthropology</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                }
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 col-xs-6 custom-heading">
+                                        Introduction:
+                                    </div>
+                                    <div class="col-md-8 col-sm-6 col-xs-6">
+                                        <p style="overflow-wrap:break-word">@item.AboutYourSelf</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-12 col-xs-12">
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <hr />
+
+    </div>
+
+    <script>
+
+            $("#Courses").change(function () {
+                var getValue = $(this).val();
+                var a = document.getElementById('CSModules');
+                var b = document.getElementById('EngineeringModules');
+                var c = document.getElementById('TeachingModules');
+                var d = document.getElementById('BiologyModules');
+                var e = document.getElementById('GeographyModules');
+                var f = document.getElementById('MathsModules');
+                var g = document.getElementById('CommunicationModules');
+                var h = document.getElementById('ChemistryModules');
+                var i = document.getElementById('PhysicsModules');
+                var j = document.getElementById('LawModules');
+                var k = document.getElementById('EconomicsModules');
+                var l = document.getElementById('BusinessModules');
+                var m = document.getElementById('MusicModules');
+                var n = document.getElementById('ArchitectureModules');
+                var o = document.getElementById('EnglishModules');
+                var p = document.getElementById('DentistryModules');
+                var q = document.getElementById('MarineScienceModules');
+                var r = document.getElementById('MedicineModules');
+                var s = document.getElementById('AccountingModules');
+                var t = document.getElementById('AnthropologyModules');
+
+                if (getValue.includes("Computer Science")) {
+                    if (a.style.display === 'none') {
+                        a.style.display = 'block';
+                    }
+                }
+                else {
+                    a.style.display = 'none';
+                }
+
+                if (getValue.includes("Engineering")) {
+                    if (b.style.display === 'none') {
+                        b.style.display = 'block';
+                    }
+                }
+                else {
+                    b.style.display = 'none';
+                }
+
+                if (getValue.includes("Teaching")) {
+                    if (c.style.display === 'none') {
+                        c.style.display = 'block';
+                    }
+                }
+                else {
+                    c.style.display = 'none';
+                }
+
+                if (getValue.includes("Biology")) {
+                    if (d.style.display === 'none') {
+                        d.style.display = 'block';
+                    }
+                }
+                else {
+                    d.style.display = 'none';
+                }
+
+                if (getValue.includes("Geography")) {
+                    if (e.style.display === 'none') {
+                        e.style.display = 'block';
+                    }
+                }
+                else {
+                    e.style.display = 'none';
+                }
+
+                if (getValue.includes("Math")) {
+                    if (f.style.display === 'none') {
+                        f.style.display = 'block';
+                    }
+                }
+                else {
+                    f.style.display = 'none';
+                }
+
+                if (getValue.includes("Communication")) {
+                    if (g.style.display === 'none') {
+                        g.style.display = 'block';
+                    }
+                }
+                else {
+                    g.style.display = 'none';
+                }
+
+                if (getValue.includes("Chemistry")) {
+                    if (h.style.display === 'none') {
+                        h.style.display = 'block';
+                    }
+                }
+                else {
+                    h.style.display = 'none';
+                }
+
+                if (getValue.includes("Physics")) {
+                    if (i.style.display === 'none') {
+                        i.style.display = 'block';
+                    }
+                }
+                else {
+                    i.style.display = 'none';
+                }
+
+                if (getValue.includes("Law")) {
+                    if (j.style.display === 'none') {
+                        j.style.display = 'block';
+                    }
+                }
+                else {
+                    j.style.display = 'none';
+                }
+                if (getValue.includes("Economics")) {
+                    if (k.style.display === 'none') {
+                        k.style.display = 'block';
+                    }
+                }
+                else {
+                    k.style.display = 'none';
+                }
+                if (getValue.includes("Business")) {
+                    if (l.style.display === 'none') {
+                        l.style.display = 'block';
+                    }
+                }
+                else {
+                    l.style.display = 'none';
+                }
+                if (getValue.includes("Music")) {
+                    if (m.style.display === 'none') {
+                        m.style.display = 'block';
+                    }
+                }
+                else {
+                    m.style.display = 'none';
+                }
+                if (getValue.includes("Architecture")) {
+                    if (n.style.display === 'none') {
+                        n.style.display = 'block';
+                    }
+                }
+                else {
+                    n.style.display = 'none';
+                }
+                if (getValue.includes("English")) {
+                    if (o.style.display === 'none') {
+                        o.style.display = 'block';
+                    }
+                }
+                else {
+                    o.style.display = 'none';
+                }
+                if (getValue.includes("Dentistry")) {
+                    if (p.style.display === 'none') {
+                        p.style.display = 'block';
+                    }
+                }
+                else {
+                    p.style.display = 'none';
+                }
+                if (getValue.includes("Marine Science")) {
+                    if (q.style.display === 'none') {
+                        q.style.display = 'block';
+                    }
+                }
+                else {
+                    q.style.display = 'none';
+                }
+                if (getValue.includes("Medicine")) {
+                    if (r.style.display === 'none') {
+                        r.style.display = 'block';
+                    }
+                }
+                else {
+                    r.style.display = 'none';
+                }
+                if (getValue.includes("Accounting")) {
+                    if (s.style.display === 'none') {
+                        s.style.display = 'block';
+                    }
+                }
+                else {
+                    s.style.display = 'none';
+                }
+                if (getValue.includes("Anthropology")) {
+                    if (t.style.display === 'none') {
+                        t.style.display = 'block';
+                    }
+                }
+                else {
+                    t.style.display = 'none';
+                }
+            });
+        //$("#Courses").change(function () {
+        //    var selects = [];
+            
+        //    var optionValue = $(this).val();
+        //    for (var i = 0; i<)
+        //    $("#Courses option:selected").each(function () {
+                
+        //        var optionText = $(this).text();
+        //        if (optionValue == "Computer Science") {
+        //            if (a.style.display === 'none') {
+        //                a.style.display = 'block';
+        //            }
+        //        } else {
+        //            a.style.display = 'none';
+        //        }
+
+        //        if (status == "Engineering") {
+        //            if (b.style.display === 'none') {
+        //                b.style.display = 'block';
+        //            }
+        //        }
+        //        else {
+        //            a.style.display = 'block';
+        //        }
+        //    })
+            
+            
+            
+        //});
+    </script>
+
+    <!-- Footer -->
+    <div class="footer text-muted">
+        &copy; 2021. Developed by <a href="http://nodlays.com" target="_blank">nodlays</a>
+    </div>
+    <!-- /footer -->
+
+</div>
